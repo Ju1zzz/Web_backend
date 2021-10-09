@@ -5,12 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
+     <style>
+        a.active {
+            background-color: yellow;
+        }
+    </style>
 </head>
 <body>
     <div>
-         <a href="/">Главная</a>
-        <a href="/mermaid">Русалка</a>
-        <a href="/uranus">Уран</a>
+        {% for item in menu %}
+            <a href="{{item.url}}" class="{{ title == item.title ? 'active' }}">{{item.title}}</a>
+        {% endfor %}
     </div>
     {% block content %}
         пустота
