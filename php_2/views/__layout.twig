@@ -12,13 +12,15 @@
     </style>
 </head>
 <body>
-    <div>
+    <div> <!-- добавляем цикл по всем элементам меню -->
         {% for item in menu %}
-            <a href="{{item.url}}" class="{{ title == item.title ? 'active' }}">{{item.title}}</a>
-        {% endfor %}
+        <a href="{{item.url}}" class="{{ title == item.title ? 'active' }}">{{item.title}}</a>
+    {% endfor %}
     </div>
+
     {% block content %}
         пустота
     {% endblock %}
+
 </body>
 </html>
