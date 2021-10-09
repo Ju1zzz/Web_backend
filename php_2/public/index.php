@@ -15,20 +15,24 @@ $url = $_SERVER["REQUEST_URI"];
 
 $title = "";
 $template = "";
+$context = []; 
 
-// тут теперь просто заполняю значение переменных
 if ($url == "/") {
     $title = "Главная";
     $template = "main.twig";
 } elseif (preg_match("#/mermaid#", $url)) {
     $title = "Русалка";
-    $template = "mermaid.twig";
+    $template = "base_image.twig";
+    
+    $context['image'] = "/images/mermaid.jpg"; 
 } elseif (preg_match("#/uranus#", $url)) {
     $title = "Уран";
-    $template = "uranus.twig";
+    $template = "base_image.twig";
+    
+    $context['image'] = "/images/uranus.png"; 
 }
 
-// рендеринг делаем один раз по заполненным переменным
-echo $twig->render($template, [
-    "title" => $title
-]);
+
+$context['title'] = $title;
+
+echo $twig->render($template, $context);
