@@ -13,16 +13,22 @@ $twig = new \Twig\Environment($loader);
 
 $url = $_SERVER["REQUEST_URI"];
 
+$title = "";
+$template = "";
+
+// тут теперь просто заполняю значение переменных
 if ($url == "/") {
-    // это убираем require "../views/main.html";
-    
-    echo $twig->render("main.html");
+    $title = "Главная";
+    $template = "main.twig";
 } elseif (preg_match("#/mermaid#", $url)) {
-    // и это тоже require "../views/mermaid.html";
-    
-    echo $twig->render("mermaid.html");
+    $title = "Русалка";
+    $template = "mermaid.twig";
 } elseif (preg_match("#/uranus#", $url)) {
-    // и вот это require "../views/uranus.html";
-    
-    echo $twig->render("uranus.html");
+    $title = "Уран";
+    $template = "uranus.twig";
 }
+
+// рендеринг делаем один раз по заполненным переменным
+echo $twig->render($template, [
+    "title" => $title
+]);
