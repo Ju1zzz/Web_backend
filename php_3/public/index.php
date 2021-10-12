@@ -15,8 +15,7 @@ $context = [];
 $objects = [ 
     [
         "title" => "Главная",
-        "url" => "/",
-        $template = "main.twig"
+        "url" => "/"
     ],
     [
         "title" => "Король Стейтен-Айленда",
@@ -33,21 +32,27 @@ $objects = [
         "url-main" => "/game",
     ]
 ];
-$context['title'] = $title;
+//$context['title'] = $title;
 $context['objects'] = $objects;
 
-echo $twig->render($template, $context);
-/*
+//echo $twig->render($template, $context);
+
 if ($url == "/") {
     $title = "Главная";
     $template = "main.twig";
-
-} elseif (preg_match("#/king#", $url)) {
+    
+} elseif (preg_match("#/king/image#", $url)) {
     $title = "Король Стейтен-Айленда";
     $template = "base_image.twig";
     $context['image'] = "/images/king.jpg";
     
-} elseif (preg_match("#/student#", $url)) {
+} elseif (preg_match("#/king/info#", $url)) {
+    $title = "Король Стейтен-Айленда";
+    $template = "base_info.twig";
+    $context['text'] = "hgvhjhhgjhhhhhhhhhhhhhhhhhhhhhhhhhhh";
+    
+} 
+elseif (preg_match("#/student#", $url)) {
     $title = "Ученик чудовища";
     $template = "base_image.twig";
     $context['image'] = "/images/student.jpg"; 
@@ -60,5 +65,5 @@ if ($url == "/") {
 
 $context['title'] = $title;
 
-echo $twig->render($template, $context);*/
+echo $twig->render($template, $context);
 ?>
