@@ -2,7 +2,7 @@
     $is_image=$url=="/student/image";
     $is_info=$url=="/student/info";
     ?>
-<h1>Ученик чудовища</h1>
+<h1>Король Стейтен-Айленда</h1>
 <ul class="nav nav-pills">
   <li class="nav-item">
     <a class="nav-link <?php if ($is_image) { ?>active<?php } ?>" href="/student/image">Картинка</a>
