@@ -15,27 +15,28 @@ $context = [];
 $objects = [ 
     [
         "title" => "Главная",
-        "url" => "/"
+        "url-main" => "/"
     ],
     [
         "title" => "Король Стейтен-Айленда",
         "url-main" => "/king",
-        "url-image" => "",
-        "url-about" => ""
+        "url-image" => "/king/image",
+        "url-about" => "/king/info"
     ],
     [
         "title" => "Ученик чудовища",
         "url-main" => "/student",
+        "url-image" => "/student/image",
+        "url-about" => "/student/info"
     ],
     [
         "title" => "Игра в кальмара",
         "url-main" => "/game",
+        "url-image" => "/game/image",
+        "url-about" => "/game/info"
     ]
 ];
-//$context['title'] = $title;
 $context['objects'] = $objects;
-
-//echo $twig->render($template, $context);
 
 if ($url == "/") {
     $title = "Главная";
@@ -52,15 +53,25 @@ if ($url == "/") {
     $context['text'] = "hgvhjhhgjhhhhhhhhhhhhhhhhhhhhhhhhhhh";
     
 } 
-elseif (preg_match("#/student#", $url)) {
+elseif (preg_match("#/student/image#", $url)) {
     $title = "Ученик чудовища";
     $template = "base_image.twig";
     $context['image'] = "/images/student.jpg"; 
     
-}elseif (preg_match("#/game#", $url)) {
+}elseif (preg_match("#/student/info#", $url)) {
+    $title = "Ученик чудовища";
+    $template = "base_info.twig";
+    $context['text'] = "stuuuuuuuuuuuuuuuuudent"; 
+    
+}elseif (preg_match("#/game/image#", $url)) {
     $title = "Игра в кальмара";
     $template = "base_image.twig";
     $context['image'] = "/images/gra-v-kalmara.jpg"; 
+
+}elseif (preg_match("#/game/info#", $url)) {
+    $title = "Игра в кальмара";
+    $template = "base_info.twig";
+    $context['text'] = "gaaaaaaaaaaaaaaaaaaaaaameee"; 
 }
 
 $context['title'] = $title;
