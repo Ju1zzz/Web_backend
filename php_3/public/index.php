@@ -12,10 +12,6 @@ $title = "";
 $template = "";
 $menu = [ 
     [
-        "title" => "Главная",
-        "url" => "/",
-    ],
-    [
         "title" => "Ученик чудовища",
         "url-main" => "/student",
         "url-image" => "/student/image",
@@ -43,14 +39,16 @@ if ($url == "/") {
     
 } elseif (preg_match("#/king#", $url)) {
     $title = "Король Стейтен-Айленда";
-    $template = "__oblect.twig";
-    
+    $template = "__object.twig";
+    $context['page'] = "/king";
+
     if (preg_match("#/king/image#", $url)) {
     $template = "base_image.twig";
     $context['image'] = "/images/king.jpg";
     $context['type'] = "image";
-
+    
     } elseif(preg_match("#/king/info#", $url)) {
+
         $template = "base_info.twig";
         $context['text'] = file_get_contents("C:/WEB-backend/php_3/views/king-about.php");
         $context['type'] = "text";
@@ -58,8 +56,8 @@ if ($url == "/") {
 
 } elseif (preg_match("#/student#", $url)) {
     $title = "Ученик чудовища";
-    $template = "__oblect.twig";
-
+    $template = "__object.twig";
+    $context['page'] = "/student";
 
     if (preg_match("#/student/image#", $url)) {
     $template = "base_image.twig";
@@ -74,8 +72,8 @@ if ($url == "/") {
 
 } elseif (preg_match("#/game#", $url)) {
     $title = "Игра в кальмара";
-    $template = "__oblect.twig";
-    
+    $template = "__object.twig";
+    $context['page'] = "/game";
 
     if (preg_match("#/game/image#", $url)) {
     $template = "base_image.twig";
