@@ -40,18 +40,19 @@ if ($url == "/") {
 } elseif (preg_match("#/king#", $url)) {
     $title = "Король Стейтен-Айленда";
     $template = "__object.twig";
-    $context['page'] = "/king";
+    
 
     if (preg_match("#/king/image#", $url)) {
     $template = "base_image.twig";
     $context['image'] = "/images/king.jpg";
     $context['type'] = "image";
-    
+    $context['page'] = "/king";
     } elseif(preg_match("#/king/info#", $url)) {
 
         $template = "base_info.twig";
         $context['text'] = file_get_contents("C:/WEB-backend/php_3/views/king-about.php");
         $context['type'] = "text";
+        $context['page'] = "/king";
     }  
 
 } elseif (preg_match("#/student#", $url)) {
