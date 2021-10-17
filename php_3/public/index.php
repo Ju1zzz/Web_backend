@@ -3,6 +3,7 @@
 require_once "../vendor/autoload.php";
 require_once "../controllers/MainController.php";
 require_once "../controllers/KingController.php";
+require_once "../controllers/KingImageController.php";
 
 $loader = new \Twig\Loader\FilesystemLoader('../views');
 
@@ -48,15 +49,16 @@ if ($url == "/") {
     $controller = new KingController($twig);
 
     if (preg_match("#/king/image#", $url)) {
-    $template = "base_image.twig";
-    $context['image'] = "/images/king.jpg";
-    $context['type'] = "image";
+    //$template = "base_image.twig";
+    //$context['image'] = "/images/king.jpg";
+    //$context['type'] = "image";
+    $controller = new KingImageController($twig);
     
     } elseif(preg_match("#/king/info#", $url)) {
 
-        $template = "base_info.twig";
-        $context['text'] = file_get_contents("C:/WEB-backend/php_3/views/king-about.php");
-        $context['type'] = "text";
+       // $template = "base_info.twig";
+       // $context['text'] = file_get_contents("C:/WEB-backend/php_3/views/king-about.php");
+       // $context['type'] = "text";
         
     }  
 
