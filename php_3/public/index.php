@@ -6,7 +6,11 @@ require_once "../controllers/KingController.php";
 require_once "../controllers/StudentController.php";
 require_once "../controllers/GameController.php";
 require_once "../controllers/KingImageController.php";
+require_once "../controllers/StudentImageController.php";
+require_once "../controllers/GameImageController.php";
 require_once "../controllers/KingInfoController.php";
+require_once "../controllers/StudentInfoController.php";
+require_once "../controllers/GameInfoController.php";
 
 $loader = new \Twig\Loader\FilesystemLoader('../views');
 
@@ -72,14 +76,16 @@ if ($url == "/") {
     $controller = new StudentController($twig);
 
     if (preg_match("#/student/image#", $url)) {
-    $template = "base_image.twig";
-    $context['image'] = "/images/student.jpg";
-    $context['type'] = "image";
+    //$template = "base_image.twig";
+   // $context['image'] = "/images/student.jpg";
+   // $context['type'] = "image";
+   $controller = new StudentImageController($twig);
 
     } elseif(preg_match("#/student/info#", $url)) {
-        $template = "base_info.twig";
-        $context['text'] = file_get_contents("C:/WEB-backend/php_3/views/student-about.php");
-        $context['type'] = "text";
+        //$template = "base_info.twig";
+       // $context['text'] = file_get_contents("C:/WEB-backend/php_3/views/student-about.php");
+        //$context['type'] = "text";
+        $controller = new StudentInfoController($twig);
     }  
 
 } elseif (preg_match("#/game#", $url)) {
@@ -89,14 +95,16 @@ if ($url == "/") {
     $controller = new GameController($twig);
 
     if (preg_match("#/game/image#", $url)) {
-    $template = "base_image.twig";
-    $context['image'] = "/images/gra-v-kalmara.jpg";
-    $context['type'] = "image";
+   // $template = "base_image.twig";
+   // $context['image'] = "/images/gra-v-kalmara.jpg";
+   // $context['type'] = "image";
+    $controller = new GameImageController($twig);
 
     } elseif(preg_match("#/game/info#", $url)) {
-        $template = "base_info.twig";
-        $context['text'] = file_get_contents("C:/WEB-backend/php_3/views/game-about.php");
-        $context['type'] = "text";
+       // $template = "base_info.twig";
+        //$context['text'] = file_get_contents("C:/WEB-backend/php_3/views/game-about.php");
+        //$context['type'] = "text";
+        $controller = new GameInfoController($twig);
     }  
 } 
 
