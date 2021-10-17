@@ -2,6 +2,7 @@
 
 require_once "../vendor/autoload.php";
 require_once "../controllers/MainController.php";
+require_once "../controllers/KingController.php";
 
 $loader = new \Twig\Loader\FilesystemLoader('../views');
 
@@ -11,7 +12,7 @@ $url = $_SERVER["REQUEST_URI"];
 
 $title = "";
 $template = "";
-$menu = [ 
+/*$menu = [ 
     [
         "title" => "Ученик чудовища",
         "url-main" => "/student",
@@ -30,7 +31,7 @@ $menu = [
         "url-image" => "/game/image",
         "url-info" => "/game/info"
     ]
-];
+];*/
 
 $context = []; 
 $controller = null;
@@ -41,9 +42,10 @@ if ($url == "/") {
     $controller = new MainController($twig);
     
 } elseif (preg_match("#/king#", $url)) {
-    $title = "Король Стейтен-Айленда";
-    $template = "__object.twig";
-    $context['page'] = "/king";
+    //$title = "Король Стейтен-Айленда";
+    //$template = "__object.twig";
+    //$context['page'] = "/king";
+    $controller = new KingController($twig);
 
     if (preg_match("#/king/image#", $url)) {
     $template = "base_image.twig";
