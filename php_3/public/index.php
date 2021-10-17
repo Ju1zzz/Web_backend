@@ -1,6 +1,7 @@
 <?php
 
-require_once '../vendor/autoload.php';
+require_once "../vendor/autoload.php";
+require_once "../controllers/MainController.php";
 
 $loader = new \Twig\Loader\FilesystemLoader('../views');
 
@@ -32,10 +33,12 @@ $menu = [
 ];
 
 $context = []; 
+$controller = null;
 
 if ($url == "/") {
-    $title = "Главная";
-    $template = "main.twig";
+    //$title = "Главная";
+   // $template = "main.twig";
+    $controller = new MainController($twig);
     
 } elseif (preg_match("#/king#", $url)) {
     $title = "Король Стейтен-Айленда";
@@ -88,8 +91,10 @@ if ($url == "/") {
     }  
 } 
 
-$context['title'] = $title;
-$context['menu'] = $menu;
+//$context['title'] = $title;
+//$context['menu'] = $menu;
 
-echo $twig->render($template, $context);
-?>
+//echo $twig->render($template, $context);
+if ($controller) {
+    $controller->get();
+}
