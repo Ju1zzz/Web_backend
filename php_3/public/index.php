@@ -29,7 +29,7 @@ if ($url == "/") {
 
     } elseif(preg_match("#/king/info#", $url)) {
         $template = "base_info.twig";
-        $context['text'] = file_get_contents("C:\WEB-backend\php_3\views\king-about.php");
+        $context['text'] = file_get_contents("C:/WEB-backend/php_3/views/king-about.php");
         $context['type'] = "text";
     }  
 } elseif (preg_match("#/student#", $url)) {
@@ -44,7 +44,7 @@ if ($url == "/") {
 
     } elseif(preg_match("#/student/info#", $url)) {
         $template = "base_info.twig";
-        $context['text'] = file_get_contents("C:\WEB-backend\php_3\views\student-about.php");
+        $context['text'] = file_get_contents("C:/WEB-backend/php_3/views/student-about.php");
         $context['type'] = "text";
     }  
 } elseif (preg_match("#/game#", $url)) {
@@ -59,11 +59,10 @@ if ($url == "/") {
 
     } elseif(preg_match("#/game/info#", $url)) {
         $template = "base_info.twig";
-        $context['text'] = file_get_contents("C:\WEB-backend\php_3\views\game-about.php");
+        $context['text'] = file_get_contents("C:/WEB-backend/php_3/views/game-about.php");
         $context['type'] = "text";
     }  
 } 
-
 
 $context['title'] = $title;
 
