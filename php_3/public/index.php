@@ -11,6 +11,7 @@ require_once "../controllers/GameImageController.php";
 require_once "../controllers/KingInfoController.php";
 require_once "../controllers/StudentInfoController.php";
 require_once "../controllers/GameInfoController.php";
+require_once "../controllers/Controller404.php";
 
 $loader = new \Twig\Loader\FilesystemLoader('../views');
 
@@ -20,7 +21,7 @@ $url = $_SERVER["REQUEST_URI"];
 
 $title = "";
 $template = "";
-/*$menu = [ 
+$menu = [ 
     [
         "title" => "Ученик чудовища",
         "url-main" => "/student",
@@ -39,12 +40,12 @@ $template = "";
         "url-image" => "/game/image",
         "url-info" => "/game/info"
     ]
-];*/
+];
 
 $context = []; 
-$controller = null;
+$controller = new Controller404($twig);
 
-if ($url == "/") {
+/*if ($url == "/") {
     //$title = "Главная";
    // $template = "main.twig";
     $controller = new MainController($twig);
@@ -106,6 +107,38 @@ if ($url == "/") {
         //$context['type'] = "text";
         $controller = new GameInfoController($twig);
     }  
+} */
+if ($url == "/") {
+    $controller = new MainController($twig);
+    
+}elseif (preg_match("#/king/image#", $url)) {
+    $controller = new KingImageController($twig);
+    
+} elseif(preg_match("#/king/info#", $url)) {
+       $controller = new KingInfoController($twig);
+
+} elseif (preg_match("#/king#", $url)) {
+    $controller = new KingController($twig);
+
+} 
+elseif (preg_match("#/student/image#", $url)) {
+    $controller = new StudentImageController($twig);
+    
+} elseif(preg_match("#/student/info#", $url)) {
+       $controller = new StudentInfoController($twig);
+
+} elseif (preg_match("#/student#", $url)) {
+    $controller = new StudentController($twig);
+
+} elseif (preg_match("#/game/image#", $url)) {
+    $controller = new GameImageController($twig);
+    
+} elseif(preg_match("#/game/info#", $url)) {
+       $controller = new GameInfoController($twig);
+
+} elseif (preg_match("#/game#", $url)) {
+    $controller = new GameController($twig);
+
 } 
 
 //$context['title'] = $title;
