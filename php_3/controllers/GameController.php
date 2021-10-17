@@ -1,15 +1,15 @@
 <?php
 require_once "TwigBaseController.php"; 
 
-class KingController extends TwigBaseController {
-    public $title = "Король Стейтен-Айленда"; 
+class GameController extends TwigBaseController {
+    public $title = "Игра в кальмара"; 
     public $template = "__object.twig"; 
     
     public function getContext() : array
     {
        
         $context = parent::getContext(); 
-        $context['page'] = "king";
+        $context['page'] = "game";
         $context['title'] = $this->title; 
         return $context;
     }

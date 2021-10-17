@@ -3,7 +3,10 @@
 require_once "../vendor/autoload.php";
 require_once "../controllers/MainController.php";
 require_once "../controllers/KingController.php";
+require_once "../controllers/StudentController.php";
+require_once "../controllers/GameController.php";
 require_once "../controllers/KingImageController.php";
+require_once "../controllers/KingInfoController.php";
 
 $loader = new \Twig\Loader\FilesystemLoader('../views');
 
@@ -59,13 +62,14 @@ if ($url == "/") {
        // $template = "base_info.twig";
        // $context['text'] = file_get_contents("C:/WEB-backend/php_3/views/king-about.php");
        // $context['type'] = "text";
-        
+       $controller = new KingInfoController($twig);
     }  
 
 } elseif (preg_match("#/student#", $url)) {
-    $title = "Ученик чудовища";
-    $template = "__object.twig";
-    $context['page'] = "/student";
+    //$title = "Ученик чудовища";
+    //$template = "__object.twig";
+    //$context['page'] = "/student";
+    $controller = new StudentController($twig);
 
     if (preg_match("#/student/image#", $url)) {
     $template = "base_image.twig";
@@ -79,9 +83,10 @@ if ($url == "/") {
     }  
 
 } elseif (preg_match("#/game#", $url)) {
-    $title = "Игра в кальмара";
-    $template = "__object.twig";
-    $context['page'] = "/game";
+    //$title = "Игра в кальмара";
+   // $template = "__object.twig";
+    //$context['page'] = "/game";
+    $controller = new GameController($twig);
 
     if (preg_match("#/game/image#", $url)) {
     $template = "base_image.twig";
