@@ -1,8 +1,12 @@
 {% macro btn(text, url, bool, mes) %}
-
-    <a href="{{ url }}" 
-    class="btn {{ bool ? mes  : 'btn-link' }} {% if mes is not empty %} btn-{{mes}} {% else %} btn-primary {% endif %}">
+    {% if mes is not empty %}
+    <a href="{{ url }}" class="btn {{ bool ? mes  : 'btn-link' }} btn-{{mes}} {{ type == 'image' ? 'active' }}">
         {{ text }}
     </a>
-    
-{% endmacro %}
+    {% else %}
+    <a href="{{ url }}" class="btn {{ bool ? mes  : 'btn-link' }} btn-primary {{ type == 'text' ? 'active' }} ">
+        {{ text }}
+    </a> 
+    {% endif %}
+
+{% endmacro %} 

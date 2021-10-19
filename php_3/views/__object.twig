@@ -6,11 +6,11 @@
 <ul class="nav nav-pills">
   <li class="nav-item">
    <!--<a class="nav-link  {{ type == 'image' ? 'active' }}" href=>Картинка</a>-->
-    {{ macros.btn( "Картинка" , '/'~ page ~'/image', false) }}
+    {{ macros.btn( "Картинка" , '/'~ page ~'/image', false,"image") }}
     </li>
   <li class="nav-item ">
     <!--<a class="nav-link {{ type == 'text' ? 'active' }}" href="{{page}}/info">Описание</a>-->
-    {{ macros.btn( "Описание" , '/'~ page ~'/info', false) }}
+    {{ macros.btn( "Описание" , '/'~ page ~'/info', false, "text") }}
   </li>
 </ul>
 <ul class="list-group">
