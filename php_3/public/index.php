@@ -21,26 +21,7 @@ $url = $_SERVER["REQUEST_URI"];
 
 $title = "";
 $template = "";
-$menu = [ 
-    [
-        "title" => "Ученик чудовища",
-        "url-main" => "/student",
-        "url-image" => "/student/image",
-        "url-info" => "/student/info"
-    ],
-    [
-        "title" => "Король Стейтен-Айленда",
-        "url-main" => "/king",
-        "url-image" => "/king/image",
-        "url-info" => "/king/info"
-    ],
-    [
-        "title" => "Игра в кальмара",
-        "url-main" => "/game",
-        "url-image" => "/game/image",
-        "url-info" => "/game/info"
-    ]
-];
+
 
 $context = []; 
 $controller = new Controller404($twig);
