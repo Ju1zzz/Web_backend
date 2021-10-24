@@ -6,12 +6,5 @@
     {% if bool == false %}
            <a href= "{{url}}" class="{{typeB}} {% if type == 'text' %} active {% endif %}">{{textB}}</a> 
     {% endif %}
-   
-   <!-- <a href="{{ url }}" 
-
-    class="btn {{ bool ? mes  : 'btn-link' }} {% if mes is not empty %} btn-{{mes}} {% else %} btn-primary {% endif %}">
-        {{ text }}
-    </a>-->
-
-
+  
 {% endmacro %}
