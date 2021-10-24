@@ -1,10 +1,17 @@
-{% macro btn(text, url, bool, typeB) %} 
+{% macro btn(textB, url, bool, typeB, type) %} 
     
     {% if bool == true %}
-          <a  href="{{url}}" class="btn btn-primary" >{{text}}</a>  
+          <a  href="{{url}}" class="btn btn-primary" >{{textB}}</a>  
     {% endif %}
     {% if bool == false %}
-           <a href= "{{url}}" class="{{typeB}}">{{text}}</a> 
+           <a href= "{{url}}" class="{{typeB}} {% if type == 'text' %} active {% endif %}">{{textB}}</a> 
     {% endif %}
+   
+   <!-- <a href="{{ url }}" 
+
+    class="btn {{ bool ? mes  : 'btn-link' }} {% if mes is not empty %} btn-{{mes}} {% else %} btn-primary {% endif %}">
+        {{ text }}
+    </a>-->
+
 
 {% endmacro %}

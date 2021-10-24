@@ -7,7 +7,7 @@ class GameImageController extends GameController {
     public function getContext(): array
     {
         $context = parent::getContext(); 
-            $context['image'] = "/images/gra-v-kalmara.jpg";
+         $context['image'] = "/images/gra-v-kalmara.jpg";
         $context['type'] = "image";
         return $context;
     }
