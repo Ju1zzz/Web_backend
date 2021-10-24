@@ -1,17 +1,11 @@
 {% extends "__layout.twig" %}
 
 {% block content %}
-{% import "micro.twig" as macros %}
 <ul class="list-group"></ul>
 {% for item in menu %}
     <li class="list-group-item">
-            {{ macros.btn( item.title , item['url-main'], true, "warning") }}
-            {{ macros.btn( "Картинка" , item['url-image'], true, "light") }}
-            {{ macros.btn( "Описание" , item['url-info'], true, "light") }}
+            {% include('menu.html') %}
     </li>
 {% endfor %}
 </ul>
-
-
-
 {% endblock %}

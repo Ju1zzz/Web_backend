@@ -11,15 +11,7 @@ class StudentController extends TwigBaseController {
         $context = parent::getContext(); 
         $context['page'] = "student";
         $context['title'] = $this->title; 
-        $menu = [ 
-            [
-                "title" => "Ученик чудовища",
-                "url-main" => "/student",
-                "url-image" => "/student/image",
-                "url-info" => "/student/info"
-            ]
-        ];
-        $context['menu'] = $menu;
+        
         return $context;
     }
     
