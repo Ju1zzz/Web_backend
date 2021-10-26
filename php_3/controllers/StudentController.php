@@ -1,5 +1,5 @@
 <?php
-require_once "TwigBaseController.php"; 
+//require_once "TwigBaseController.php"; 
 
 class StudentController extends TwigBaseController {
     public $title = "Ученик чудовища"; 

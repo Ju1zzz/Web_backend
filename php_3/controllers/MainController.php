@@ -1,5 +1,5 @@
 <?php
-require_once "TwigBaseController.php"; 
+//require_once "TwigBaseController.php"; 
 
 class MainController extends TwigBaseController {
     public $template = "main.twig";
@@ -9,27 +9,12 @@ class MainController extends TwigBaseController {
     {
        
         $context = parent::getContext(); 
-        $menu = [ 
-            [
-                "title" => "Ученик чудовища",
-                "url-main" => "/student",
-                "url-image" => "/student/image",
-                "url-info" => "/student/info"
-            ],
-            [
-                "title" => "Король Стейтен-Айленда",
-                "url-main" => "/king",
-                "url-image" => "/king/image",
-                "url-info" => "/king/info"
-            ],
-            [
-                "title" => "Игра в кальмара",
-                "url-main" => "/game",
-                "url-image" => "/game/image",
-                "url-info" => "/game/info"
-            ]
-        ];
-        $context['menu'] = $menu;
+    
+
+        $query = $this->pdo->query("SELECT * FROM objects");
+        
+        $context['objects'] = $query->fetchAll();
+
         return $context;
     }
     

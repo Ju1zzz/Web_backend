@@ -1,5 +1,5 @@
 <?php
-require_once "TwigBaseController.php"; 
+//require_once "TwigBaseController.php"; 
 
 class KingController extends TwigBaseController {
     public $title = "Король Стейтен-Айленда"; 

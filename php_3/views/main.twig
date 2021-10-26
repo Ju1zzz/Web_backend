@@ -1,11 +1,18 @@
 {% extends "__layout.twig" %}
 
 {% block content %}
-<ul class="list-group"></ul>
-{% for item in menu %}
-    <li class="list-group-item">
-            {% include('menu.html') %}
-    </li>
-{% endfor %}
-</ul>
-{% endblock %}
+	<pre>
+<!--{{ dump(objects) }}--> 
+</pre>
+	{% for object in objects %}
+		Название:
+		{{ object.title}}
+		<br>
+	{% endfor %}
+	<ul class="list-group"></ul>
+	{% for item in menu %}
+		<li class="list-group-item">
+			{% include('menu.html') %}
+		</li>
+	{% endfor %}
+</ul>{% endblock %}
