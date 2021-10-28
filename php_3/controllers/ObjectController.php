@@ -1,20 +1,22 @@
 <?php
 
 class ObjectController extends TwigBaseController {
-    public $template = "base_info.twig"; // указываем шаблон
+    public $template = "__object.twig"; // указываем шаблон
 
     public function getContext(): array
     {
         $context = parent::getContext();
         
-        // готовим запрос к БД, допустим вытащим запись по id=3
-        // тут уже указываю конкретные поля, там более грамотно
-        $query = $this->pdo->query("SELECT description, id FROM objects WHERE id=4");
-        // стягиваем одну строчку из базы
+       /* echo "<pre>";
+        print_r($this->params);
+        echo "</pre>";*/
+        
+        $query = $this->pdo->prepare("SELECT description, id FROM objects WHERE id= :my_id");
+        $query->bindValue("my_id", $this->params['id']);
+        $query->execute();
         $data = $query->fetch();
         
-        // передаем описание из БД в контекст
-        $context['text'] = $data['description'];
+        $context['description'] = $data['description'];
 
         return $context;
     }

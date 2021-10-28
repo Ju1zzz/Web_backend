@@ -20,8 +20,14 @@ class TwigBaseController extends BaseController {
     public function getContext() : array
     {
         $context = parent::getContext(); // вызываем родительский метод
-        $context['title'] = $this->title; // добавляем title в контекст
-        $menu = [ 
+        //$context['title'] = $this->title; // добавляем title в контекст
+        $query = $this->pdo->prepare("SELECT title FROM objects WHERE id= :my_id");
+        $query->bindValue("my_id", $this->params['id']);
+        $query->execute();
+        $data = $query->fetch();
+        
+        $context['title'] = $data['title'];
+       /* $menu = [ 
             [
                 "title" => "Ученик чудовища",
                 "url-main" => "/student",
@@ -41,7 +47,7 @@ class TwigBaseController extends BaseController {
                 "url-info" => "/game/info"
             ]
         ];
-        $context['menu'] = $menu;
+        $context['menu'] = $menu;*/
         return $context;
     }
     

@@ -13,6 +13,8 @@ class MainController extends TwigBaseController {
 
         $query = $this->pdo->query("SELECT * FROM objects");
         
+        $context['page'] = $data['id'];
+
         $context['objects'] = $query->fetchAll();
 
         return $context;

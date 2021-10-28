@@ -21,22 +21,16 @@
 						<li class="nav-item">
 							<a class="nav-link active" aria-current="page" href="/">Главная</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="/king">Король Стейтен-Айленда</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="/student">Ученик чудовища</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="/game">Игра в кальмара</a>
-						</li>
+						{% for object in objects %}
+							<li class="nav-item">
+								<a class="nav-link" href="/object/">{{ object.title}}</a>
+							</li>
+						{% endfor %}
 					</ul>
 				</div>
 			</nav>
 
-			{% block content %}
-				
-			{% endblock %}
+			{% block content %}{% endblock %}
 		</body>
 	</body>
 </html>

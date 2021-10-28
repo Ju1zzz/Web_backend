@@ -33,6 +33,6 @@ $pdo = new PDO("mysql:host=localhost;dbname=to_watch;charset=utf8", "root", "");
 $router = new Router($twig, $pdo);
 $router->add("/", MainController::class);
 $router->add("/king", KingController::class);
-$router->add("/object/(\d+)", ObjectController::class);
+$router->add("/object/(?P<id>\d+)", ObjectController::class);
 
 $router->get_or_default(Controller404::class);
