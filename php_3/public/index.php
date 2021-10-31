@@ -7,15 +7,7 @@ require_once "../controllers/ObjectController.php";
 require_once "../controllers/ObjectImageController.php";
 require_once "../controllers/ObjectInfoController.php";
 
-require_once "../controllers/KingController.php";
-require_once "../controllers/StudentController.php";
-require_once "../controllers/GameController.php";
-require_once "../controllers/KingImageController.php";
-require_once "../controllers/StudentImageController.php";
-require_once "../controllers/GameImageController.php";
-require_once "../controllers/KingInfoController.php";
-require_once "../controllers/StudentInfoController.php";
-require_once "../controllers/GameInfoController.php";
+
 require_once "../controllers/Controller404.php";
 
 
