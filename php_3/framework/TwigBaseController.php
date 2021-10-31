@@ -14,21 +14,7 @@ class TwigBaseController extends BaseController {
     public function getContext() : array
     {
         $context = parent::getContext(); 
-       /* $query = $this->pdo->prepare("SELECT title, id FROM objects WHERE id= :my_id");
-        $query->bindValue("my_id", $this->params['id']);
-        $query->execute();
-        $data = $query->fetch();
-        if ($data){
-       // $context['title'] = $data['title'];
-        //$context['id'] = $data['id'];
-        }
-       */
-      $query = $this->pdo->prepare("SELECT * FROM objects");
-        $query->execute();
-        $data = $query->fetchAll();
 
-        $context['objects'] = $data;
-        
         return $context;
     }
     
