@@ -11,13 +11,13 @@ class ObjectController extends TwigBaseController {
         print_r($this->params);
         echo "</pre>";*/
         
-        $query = $this->pdo->prepare("SELECT description, id FROM objects WHERE id= :my_id");
+        $query = $this->pdo->prepare("SELECT description, title, id FROM objects WHERE id= :my_id");
         $query->bindValue("my_id", $this->params['id']);
         $query->execute();
         $data = $query->fetch();
         $context['description'] = $data['description'];
         $context['id'] = $data['id'];
-        
+        $context['title'] = $data['title'];
         return $context;
     }
 }

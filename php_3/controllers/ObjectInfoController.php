@@ -1,6 +1,6 @@
 <?php
 
-class ObjectInfoController extends TwigBaseController {
+class ObjectInfoController extends ObjectController {
     public $template = "base_info.twig";
       
     public function getContext(): array
