@@ -17,7 +17,7 @@ class ObjectController extends TwigBaseController {
         $data = $query->fetch();
         
         $context['description'] = $data['description'];
-
+        $context['id'] = $data['id'];
         return $context;
     }
 }

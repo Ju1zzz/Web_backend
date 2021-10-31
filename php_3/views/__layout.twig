@@ -23,14 +23,16 @@
 						</li>
 						{% for object in objects %}
 							<li class="nav-item">
-								<a class="nav-link" href="/object/">{{ object.title}}</a>
+								<a class="nav-link" href="/object/{{object.id}}">{{object.title}}</a>
 							</li>
 						{% endfor %}
 					</ul>
 				</div>
 			</nav>
 
-			{% block content %}{% endblock %}
+			{% block content %}
+			
+			{% endblock %}
 		</body>
 	</body>
 </html>

@@ -8,10 +8,10 @@
 <p>{{description}}</p>
 <ul class="nav nav-pills">
   <li class="nav-item">
-    {{ macros.btn( "Картинка" , '/'~ page ~'/image', false, 'nav-link ', type == 'image'  ) }}
+    {{ macros.btn( "Картинка" , '/object/'~ id ~'/image', false, 'nav-link ', type == 'image'  ) }}
     </li>
   <li class="nav-item ">
-    {{ macros.btn( "Описание" , '/'~ page ~'/info', false, 'nav-link ', type == 'text') }}
+    {{ macros.btn( "Описание" , '/object/'~ id ~'/info', false, 'nav-link ', type == 'text') }}
   </li>
 </ul>
 <ul class="list-group">

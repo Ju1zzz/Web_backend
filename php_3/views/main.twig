@@ -1,14 +1,25 @@
 {% extends "__layout.twig" %}
 
 {% block content %}
-	<pre>
-<!--{{ dump(objects) }}--> 
-</pre>
-	
-	<ul class="list-group"></ul>
-	{% for item in menu %}
-		<li class="list-group-item">
-			{% include('menu.html') %}
-		</li>
-	{% endfor %}
-</ul>{% endblock %}
+	<div class="container">
+		<div class="row px-0" >
+			{% for object in objects %}
+				<div class="col-12 col-xs-12 col-sm-8 col-md-3 col-lg-2 mt-1">
+					<!--{% if loop.first %}
+						first
+					{% elseif loop.last %}
+						last
+					{% else %}
+						<div>{{loop.index0}}
+							|
+							{{loop.length}}
+						</div>
+					{% endif %}-->
+
+					{% include "menu.html" %}
+
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}

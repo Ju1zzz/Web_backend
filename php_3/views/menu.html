@@ -1,4 +1,13 @@
 {% import "macros.html" as macros %}
-{{ macros.btn(item.title, "/object/{{object.id}}", true)}} 
-{{ macros.btn('Картинка', "/object/{{object.id}}/image", false, "btn btn-light") }} 
-{{ macros.btn('Описание', "/object/{{object.id}}/info", false, "btn btn-light") }} 
+<ul class="list-group mt-3"></ul>
+<div class="list-group-item p-1">
+    <img src="{{ object.image }}" class="img-fluid rounded" />
+    <div class="mt-1">
+        {{ macros.btn(object.title, "/object/{{ id }}", true)}}
+        <div class="mt-2">
+            {{ macros.btn('Картинка', "/object/{{object.id}}/image", false, "nav-link") }}
+            {{ macros.btn('Описание', "/object/{{object.id}}/info", false, "nav-link") }} 
+        </div>
+    </div>
+</div>
+</ul>

@@ -4,6 +4,9 @@ require_once "../vendor/autoload.php";
 require_once "../framework/autoload.php";
 require_once "../controllers/MainController.php";
 require_once "../controllers/ObjectController.php";
+require_once "../controllers/ObjectImageController.php";
+require_once "../controllers/ObjectInfoController.php";
+
 require_once "../controllers/KingController.php";
 require_once "../controllers/StudentController.php";
 require_once "../controllers/GameController.php";
@@ -32,7 +35,9 @@ $pdo = new PDO("mysql:host=localhost;dbname=to_watch;charset=utf8", "root", "");
 
 $router = new Router($twig, $pdo);
 $router->add("/", MainController::class);
-$router->add("/king", KingController::class);
+//$router->add("/king", KingController::class);
 $router->add("/object/(?P<id>\d+)", ObjectController::class);
+$router->add("/object/(?P<id>\d+)/image", ObjectImageController::class);
+$router->add("/object/(?P<id>\d+)/info", ObjectInfoController::class);
 
 $router->get_or_default(Controller404::class);
