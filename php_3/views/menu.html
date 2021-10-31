@@ -2,12 +2,10 @@
 <ul class="list-group mt-3"></ul>
 <div class="list-group-item p-1">
     <img src="{{ object.image }}" class="img-fluid rounded" />
-    <div class="mt-1">
+    <div class="row mx-auto mt-1">
         {{ macros.btn(object.title, "/object/{{ id }}", true)}}
-        <div class="mt-2">
-            {{ macros.btn('Картинка', "/object/{{object.id}}/image", false, "nav-link") }}
-            {{ macros.btn('Описание', "/object/{{object.id}}/info", false, "nav-link") }} 
-        </div>
+        <div class="col-auto my-2 mx-auto">{{ macros.btn('Картинка', "/object/{{object.id}}/image", false, "btn-link") }}</div> 
+        <div class="col-auto my-2 mx-auto">{{ macros.btn('Описание', "/object/{{object.id}}/info", false, "btn-link") }}</div>
     </div>
 </div>
 </ul>

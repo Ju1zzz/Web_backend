@@ -18,9 +18,11 @@ class TwigBaseController extends BaseController {
         $query->bindValue("my_id", $this->params['id']);
         $query->execute();
         $data = $query->fetch();
-
+        if ($data){
         $context['title'] = $data['title'];
         $context['id'] = $data['id'];
+        }
+        
         return $context;
     }
     

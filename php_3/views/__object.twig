@@ -1,26 +1,28 @@
 {% extends  "__layout.twig" %}
 
 {% block content %}
-{% import "macros.html" as macros %}
-<div class="container"> 
-<br>
-<h1>{{title}}</h1>
-<p>{{description}}</p>
-<ul class="nav nav-pills">
-  <li class="nav-item">
-    {{ macros.btn( "Картинка" , '/object/'~ id ~'/image', false, 'nav-link ', type == 'image'  ) }}
-    </li>
-  <li class="nav-item ">
-    {{ macros.btn( "Описание" , '/object/'~ id ~'/info', false, 'nav-link ', type == 'text') }}
-  </li>
-</ul>
-<ul class="list-group">
-  <li class="list-group-item">
-    
-{% block objectContent %}
-Выберите блок с информацией
-{% endblock %}
-</li>
-</ul></div>
-{% endblock %}
+	{% import "macros.html" as macros %}
+	<div class="container">
+		<br>
+		<h1>{{title}}</h1>
+		<p>{{description}}</p>
+		<ul class="nav nav-pills">
+			<li class="nav-item">
+				{{ macros.btn( "Картинка" , '/object/'~ id ~'/image', false, 'nav-link ', type == 'image'  ) }}
+			</li>
+			<li class="nav-item ">
+				{{ macros.btn( "Описание" , '/object/'~ id ~'/info', false, 'nav-link ', type == 'text') }}
+			</li>
+		</ul>
+		<ul class="list-group">
+			<li class="list-group-item">
 
+				{% block objectContent %}
+					<div class="container">
+						Выберите блок с информацией
+					</div>
+				{% endblock %}
+			</li>
+		</ul>
+	</div>
+{% endblock %}

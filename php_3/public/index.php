@@ -19,15 +19,10 @@ $twig = new \Twig\Environment($loader, [
 
 $twig->addExtension(new \Twig\Extension\DebugExtension());
 
-//$url = $_SERVER["REQUEST_URI"];
-
-//$controller = new Controller404($twig);
-
 $pdo = new PDO("mysql:host=localhost;dbname=to_watch;charset=utf8", "root", "");
 
 $router = new Router($twig, $pdo);
 $router->add("/", MainController::class);
-//$router->add("/king", KingController::class);
 $router->add("/object/(?P<id>\d+)", ObjectController::class);
 $router->add("/object/(?P<id>\d+)/image", ObjectImageController::class);
 $router->add("/object/(?P<id>\d+)/info", ObjectInfoController::class);
