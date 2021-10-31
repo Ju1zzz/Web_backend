@@ -22,7 +22,7 @@ class TwigBaseController extends BaseController {
         $context['title'] = $data['title'];
         $context['id'] = $data['id'];
         }
-        
+       
         return $context;
     }
     

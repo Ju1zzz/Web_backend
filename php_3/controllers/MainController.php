@@ -11,10 +11,8 @@ class MainController extends TwigBaseController {
         $context = parent::getContext(); 
     
 
-        //$query = $this->pdo->query("SELECT * FROM objects");
-
         $query = $this->pdo->prepare("SELECT * FROM objects");
-        $query->bindValue("my_id", $this->params['id']);
+       // $query->bindValue("my_id", $this->params['id']);
         $query->execute();
         $data = $query->fetchAll();
 
