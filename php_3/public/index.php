@@ -24,7 +24,7 @@ $pdo = new PDO("mysql:host=localhost;dbname=to_watch;charset=utf8", "root", "");
 $router = new Router($twig, $pdo);
 $router->add("/", MainController::class);
 $router->add("/object/(?P<id>\d+)", ObjectController::class);
-$router->add("/object/(?P<id>\d+)/image", ObjectImageController::class);
-$router->add("/object/(?P<id>\d+)/info", ObjectInfoController::class);
+//$router->add("/object/(?P<id>\d+)/image", ObjectImageController::class);
+//$router->add("/object/(?P<id>\d+)/info", ObjectInfoController::class);
 
 $router->get_or_default(Controller404::class);

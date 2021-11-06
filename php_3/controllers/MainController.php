@@ -14,6 +14,7 @@ class MainController extends BaseFilmTwigController {
        $query = $this->pdo->prepare("SELECT * FROM objects WHERE type = :type");
        $query->bindValue("type", $_GET['type']);
        $query->execute();
+      
     }
     else {
        $query = $this->pdo->query("SELECT * FROM objects");
