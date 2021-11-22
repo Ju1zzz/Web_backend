@@ -2,46 +2,51 @@
 require_once "BaseFilmTwigController.php";
 
 class ObjectController extends BaseFilmTwigController {
-    public $template = "__object.twig"; // указываем шаблон
+     public $template = "__object.twig";// указываем шаблон
 
-    public function getContext(): array
-    {
+     public function getTemplate(){
+        if(isset($_GET['view'])){
+           
+            if($_GET['view']=='image'){
+           return "base_image.twig";
+            
+            }
+            elseif ($_GET['view']=='info') {
+           return "base_info.twig";
+
+            }
+        }
+        return parent::getTemplate();
+     }
+
+    public function getContext(): array{
+        
         $context = parent::getContext();
         
-        
-     /*   $query = $this->pdo->prepare("SELECT description, title, id FROM objects WHERE id= :my_id");
-        $query->bindValue("my_id", $this->params['id']);
-        $query->execute();
-        $data = $query->fetch();
-        $context['description'] = $data['description'];
-        $context['id'] = $data['id'];
-        $context['title'] = $data['title'];*/
 
             $query = $this->pdo->prepare("SELECT image, info, description, title, id FROM objects WHERE id= :my_id");
-            $query->bindValue("my_id", $this->params['id']);
+            $query->bindValue("my_id", $this->params['id']); 
             $query->execute();
             $data = $query->fetch();
             $context['id'] = $data['id'];
             $context['title'] = $data['title'];
+            
 
-        if(isset($_GET['view'])=='image'){
+        if(isset($_GET['view'])){
            
-            
-            $context['image'] = $data['image'];
-            $context['type'] = "image";
+            if($_GET['view']=='image'){
 
-        }
-        elseif(isset($_GET['view'])){
-            
-            
-            $context['text'] = $data['info'];
+            $context['type'] = "image";
+            $context['image'] = $data['image'];
+            }
+            elseif ($_GET['view']=='info') {
             $context['type'] = "text";
-    
+            $context['text'] = $data['info'];
+            }
         }
         else {
-            
-            $context['description'] = $data['description'];
-            
+           
+            $context['description'] = $data['description'];    
         } 
         return $context;
     }

@@ -1,14 +1,17 @@
 {% import "macros.html" as macros %}
-<ul class="list-group mt-3">
-<div class="list-group-item p-1" >
-    <a class="ripple" href="/object/{{object.id}}"><img src="{{ object.image }}" 
-            class="img-fluid rounded" /></a>
-    <div class="row  mx-auto mt-1">
-        {{ macros.btn(object.title, "/object/"~ object.id ~"" , true)}}
-        <div class="col-auto my-2 mx-auto">{{ macros.btn('Картинка', "/object/"~ object.id ~"/image", false, "btn-link")
+
+    <div class="card border-primary mb-3 h-100">
+        <div class="card-body row mx-auto p-1" style="overflow:hidden;">
+          <a class="ripple" href="/object/{{object.id}}"><img src="{{ object.image }}" class=" p-1 img-thumbnail rounded"/></a>
+          <div class="row mx-auto m-1">{{ macros.btn(object.title, "/object/"~ object.id ~"" , true)}}
+          <div class="col-auto my-2 mx-auto">{{ macros.btn('Картинка', "/object/"~ object.id ~"?view=image", false,
+            "btn-link")
             }}</div>
-        <div class="col-auto my-2 mx-auto">{{ macros.btn('Описание', "/object/"~ object.id ~"/info", false, "btn-link")
+        <div class="col-auto my-2 mx-auto">{{ macros.btn('Описание', "/object/"~ object.id ~"?view=info", false,
+            "btn-link")
             }}</div>
-    </div>
-</div>
-</ul>
+          </div>
+        </div>
+      </div>
+  
+  

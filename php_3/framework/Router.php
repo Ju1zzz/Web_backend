@@ -57,7 +57,7 @@ class Router {
             $controllerInstance->setTwig($this->twig);
         }
  
-        return $controllerInstance->get();
+        return $controllerInstance->process_response();
     }
 }
 

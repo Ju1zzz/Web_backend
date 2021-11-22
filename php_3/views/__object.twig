@@ -5,13 +5,13 @@
 	<div class="container">
 		<br>
 		<h1>{{title}}</h1>
-		<p>{{description}}</p>
+		
 		<ul class="nav nav-pills">
 			<li class="nav-item">
-				{{ macros.btn( "Картинка" , '/object/'~ id ~'/?view= image', false, 'nav-link ', type == 'image'  ) }}
+				{{ macros.btn( "Картинка" , '/object/'~ id ~'?view=image', false, 'nav-link ', type == 'image'  ) }}
 			</li>
 			<li class="nav-item ">
-				{{ macros.btn( "Описание" , '/object/'~ id ~'/'~ ?view = info ~'', false, 'nav-link ', type == 'text') }}
+				{{ macros.btn( "Описание" , '/object/'~ id ~'?view=info', false, 'nav-link ', type == 'text') }}
 			</li>
 		</ul>
 		<ul class="list-group">
@@ -19,7 +19,7 @@
 
 				{% block objectContent %}
 					<div class="container">
-						Выберите блок с информацией
+					<p>{{description}}</p>
 					</div>
 				{% endblock %}
 			</li>
