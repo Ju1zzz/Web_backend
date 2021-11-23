@@ -6,6 +6,10 @@ require_once "../controllers/MainController.php";
 require_once "../controllers/ObjectController.php";
 require_once "../controllers/SearchController.php";
 require_once "../controllers/FilmObjectCreateController.php";
+require_once "../controllers/TypeObjectCreateController.php";
+require_once "../controllers/TypeController.php";
+require_once "../controllers/FilmObjectDeleteController.php";
+require_once "../controllers/FilmObjectUpdateController.php";
 
 require_once "../controllers/Controller404.php";
 
@@ -25,5 +29,9 @@ $router->add("/", MainController::class);
 $router->add("/object/(?P<id>\d+)", ObjectController::class);
 $router->add("/search", SearchController::class);
 $router->add("/add", FilmObjectCreateController::class);
+$router->add("/add_type", TypeObjectCreateController::class);
+$router->add("/types", TypeController::class);
+$router->add("/object/(?P<id>\d+)/delete", FilmObjectDeleteController::class);
+$router->add("/object/(?P<id>\d+)/edit", FilmObjectUpdateController::class);
 
 $router->get_or_default(Controller404::class);

@@ -4,11 +4,6 @@ require_once "BaseFilmTwigController.php";
 class FilmObjectCreateController extends BaseFilmTwigController {
     public $template = "film_object_create.twig";
     
-    public function get(array $context) 
-    {        
-        parent::get($context);
-    }
-
     public function post(array $context) {
         
         $title = $_POST['title'];

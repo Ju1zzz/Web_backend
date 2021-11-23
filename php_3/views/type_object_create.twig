@@ -1,0 +1,26 @@
+{% extends "__layout.twig" %}
+
+{% block content %}
+
+
+	<div class="card border-primary mb-3">
+		<div class="card-header bg-primary text-white">
+			<h1 class="m-2">Добавление типа фильмотеки</h1>
+		</div>
+		<div class="card-body text-primary">
+			<form action="" enctype="multipart/form-data" method="POST" class="row g-3">
+				<div class="col-md-4">
+					<label class="form-label">Название</label>
+					<input type="text" name="nam" class="form-control">
+				</div>
+				<div class="mb-3">
+					<label class="form-label">Выберите картинку</label>
+					<input class="form-control" type="file" name="pic">
+				</div>
+                <div class="col-12 text-end">
+					<button type="submit" class="btn btn-primary">Добавить</button>
+				</div>
+			</form>
+		</div>
+	</div>
+{% endblock %}

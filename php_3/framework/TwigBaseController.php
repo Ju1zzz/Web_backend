@@ -22,7 +22,7 @@ class TwigBaseController extends BaseController {
     }
 
     public function get(array $context) { 
-        echo $this->twig->render($this->template, $context); 
+        echo $this->twig->render($this->getTemplate(), $context); 
     }
 }
 

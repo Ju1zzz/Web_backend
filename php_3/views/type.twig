@@ -1,0 +1,19 @@
+{% extends  "__layout.twig" %}
+{% import "macros.html" as macros %}
+{% block content %}
+	<br>
+		<div class="row">
+			<br>
+			<h1>Типы</h1>
+			{% for type in types %}
+				<div class="col-12 col-xs-12 col-sm-6 col-md-4 col-lg-3 mt-2">
+					<div class="card border-primary mb-3 h-100">
+						<div class="card-header">{{type.name|title}}</div>
+						<div class="card-body row mx-auto p-1" style="overflow:hidden;">
+							<a class="ripple" href="/?type={{type.name}}"><img src="{{ type.pic }}" class=" p-1 img-fluid rounded-circle shadow"/></a>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	{% endblock %}
