@@ -17,7 +17,7 @@ class ObjectController extends BaseFilmTwigController {
             }
         }
         return parent::getTemplate();
-     }
+    }
 
     public function getContext(): array{
         
