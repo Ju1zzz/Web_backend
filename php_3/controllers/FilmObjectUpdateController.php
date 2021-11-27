@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+//error_reporting(0);
 require_once "BaseFilmTwigController.php";
 
 class FilmObjectUpdateController extends BaseFilmTwigController {
@@ -17,10 +17,8 @@ class FilmObjectUpdateController extends BaseFilmTwigController {
         $query->bindValue("id", $id);
         $query->execute();
         $data = $query->fetch();
-        $context['object']=$data;$context = parent::get($context);
-        print_r($context);
-        //return $context;
-        //$this->get( $context);
+        $context['object']=$data;
+        $context = parent::get($context);  
     }
     public function post(array $context) {
        
@@ -34,9 +32,9 @@ class FilmObjectUpdateController extends BaseFilmTwigController {
         UPDATE `objects` SET `title`= :title, `description`= :description, `type`= :type, `info`= :info WHERE `id`= :id
         EOL;
 
-        // подготавливаем запрос к БД
+        
         $query = $this->pdo->prepare($sql);
-        // привязываем параметры
+        
         $query->bindValue(":id", $id);
         $query->bindValue(":title", $title);
         $query->bindValue(":description", $description);
@@ -44,10 +42,8 @@ class FilmObjectUpdateController extends BaseFilmTwigController {
         $query->bindValue(":info", $info);
         
         $query->execute();
-        //$context['message'] = 'Объект успешно обновлён';
+        $context['message'] = 'Объект успешно обновлён';
         $this->get($context);
         
-       //return get($context);
-       //return $context;
     }
 }

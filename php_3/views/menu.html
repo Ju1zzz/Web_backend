@@ -9,11 +9,9 @@
     </form>
   </div>
   <div class="position-absolute" style="left: 4px; top: 4px;">
-    <form action="/object/{{object.id}}/edit" method="POST">
-      <button type="submit" class="btn btn-primary">
-        <i class="far fa-file-alt"></i>
-      </button>
-    </form>
+    <a class="btn btn-primary" href="/object/{{object.id}}/edit">
+      <i class="far fa-file-alt"></i>
+    </a>
   </div>
   <div class="card-body row mx-auto p-1" style="overflow:hidden;">
     <a class="ripple" href="/object/{{object.id}}"><img src="{{ object.image }}"
@@ -28,4 +26,3 @@
     </div>
   </div>
 </div>
-
