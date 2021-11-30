@@ -2,7 +2,6 @@
 
 require_once "../vendor/autoload.php";
 require_once "../framework/autoload.php";
-//require_once "../middlewares/LoginRequiredModdleware.php";
 require_once "../controllers/MainController.php";
 require_once "../controllers/ObjectController.php";
 require_once "../controllers/SearchController.php";
@@ -12,6 +11,7 @@ require_once "../controllers/TypeController.php";
 require_once "../controllers/FilmObjectDeleteController.php";
 require_once "../controllers/FilmObjectUpdateController.php";
 require_once "../framework/BaseRestController.php";
+require_once "../middlewares/LoginRequiredMiddleware.php";
 
 require_once "../controllers/Controller404.php";
 
@@ -25,20 +25,22 @@ $twig = new \Twig\Environment($loader, [
 $twig->addExtension(new \Twig\Extension\DebugExtension());
 
 $pdo = new PDO("mysql:host=localhost;dbname=to_watch;charset=utf8", "root", "");
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 $router = new Router($twig, $pdo);
 $router->add("/", MainController::class);
 $router->add("/object/(?P<id>\d+)", ObjectController::class);
 $router->add("/search", SearchController::class);
-$router->add("/add", FilmObjectCreateController::class);
-    //  ->middleware(new LoginRequiredModdleware());
-$router->add("/add_type", TypeObjectCreateController::class);
-      // ->middleware(new LoginRequiredModdleware());
+$router->add("/add", FilmObjectCreateController::class)
+      ->middleware(new LoginRequiredMiddleware());
+$router->add("/add_type", TypeObjectCreateController::class)
+       ->middleware(new LoginRequiredMiddleware());
 $router->add("/types", TypeController::class);
-$router->add("/object/(?P<id>\d+)/delete", FilmObjectDeleteController::class);
-      // ->middleware(new LoginRequiredModdleware());
-$router->add("/object/(?P<id>\d+)/edit", FilmObjectUpdateController::class);
-     //  ->middleware(new LoginRequiredModdleware());
+$router->add("/object/(?P<id>\d+)/delete", FilmObjectDeleteController::class)
+       ->middleware(new LoginRequiredMiddleware());
+$router->add("/object/(?P<id>\d+)/edit", FilmObjectUpdateController::class)
+      ->middleware(new LoginRequiredMiddleware());
 $router->add("/api/objects", BaseRestController::class);
 $router->add("/api/objects/(?P<id>\d+)", BaseRestController::class);
+
 $router->get_or_default(Controller404::class);
