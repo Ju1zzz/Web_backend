@@ -1,0 +1,12 @@
+GET  http://localhost:9007/api/objects
+###
+GET  http://localhost:9007/api/objects/5 
+###
+POST  http://localhost:9007/api/objects/5 
+Content-Type: application/json 
+
+    { "description": "rrrrrrrrrrrrr"
+    }
+###
+
+###
