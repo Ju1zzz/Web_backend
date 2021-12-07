@@ -2,10 +2,12 @@
 
 {% block content %}
 	{% import "macros.html" as macros %}
+	
+	<br>
 	<div class="container">
 		<br>
 		<h1>{{title}}</h1>
-		
+
 		<ul class="nav nav-pills">
 			<li class="nav-item">
 				{{ macros.btn( "Картинка" , '/object/'~ id ~'?view=image', false, 'nav-link ', type == 'image'  ) }}
@@ -19,10 +21,11 @@
 
 				{% block objectContent %}
 					<div class="container">
-					<p>{{description}}</p>
+						<p>{{description}}</p>
 					</div>
 				{% endblock %}
 			</li>
 		</ul>
 	</div>
+	
 {% endblock %}

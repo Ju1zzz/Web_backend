@@ -2,11 +2,24 @@ GET  http://localhost:9007/api/objects
 ###
 GET  http://localhost:9007/api/objects/5 
 ###
-POST  http://localhost:9007/api/objects/5 
+POST  http://localhost:9007/api/objects/22
 Content-Type: application/json 
 
-    { "description": "rrrrrrrrrrrrr"
+    {   "title":"helrrr",
+        "description": "rrrrrrrrrrrrr",
+        "type": "аниме",
+        "info":"eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "image_url":""
     }
 ###
+POST  http://localhost:9007/api/objects
+Content-Type: application/json 
 
+    {   "title":"hel",
+        "description": "rrrrrrrrrrrrr",
+        "type": "аниме",
+        "info":"eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "image_url":""
+    }
 ###
+DELETE http://localhost:9007/api/objects/22

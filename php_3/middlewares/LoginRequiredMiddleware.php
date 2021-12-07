@@ -3,9 +3,6 @@
 class LoginRequiredMiddleware extends BaseMiddleware {
     public function apply(BaseController $controller, array $context)
     {
-        // заводим переменные под правильный пароль
-        //$valid_user = "Admin";
-        //$valid_password = "12345";
         
         // берем значения которые введет пользователь
         $user = isset($_SERVER['PHP_AUTH_USER']) ? $_SERVER['PHP_AUTH_USER'] : '';

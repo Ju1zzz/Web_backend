@@ -16,15 +16,18 @@ abstract class BaseController {
     }
 
     public function process_response() {
+          
+        
         $method = $_SERVER['REQUEST_METHOD'];
-        $context = $this->getContext(); // вызываю context тут
+       
+        $context = $this->getContext(); 
         if ($method == 'GET') {
-            $this->get($context); // а тут просто его пробрасываю внутрь
+            $this->get($context);
         } else if ($method == 'POST') {
-            $this->post($context); // и здесь
+            $this->post($context); 
         }
     }
 
-    public function get(array $context) {} // ну и сюда добавил в качестве параметра 
-    public function post(array $context) {} // и сюда
+    public function get(array $context) {} 
+    public function post(array $context) {} 
 }

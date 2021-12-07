@@ -9,6 +9,7 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
 	</head>
 	<body>
+
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container">
 				<a class="navbar-brand" href="/">
@@ -22,28 +23,35 @@
 						<li class="nav-item">
 							<a class="nav-link active" aria-current="page" href="/">Главная</a>
 						</li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/types">Типы</a>
-                    </li>
-					<li class="nav-item">
-					<a class="nav-link active" aria-current="page" href="/search">Поиск</a>
-					</li>
-					<li class="nav-item">
-					<a class="nav-link active" aria-current="page" href="/add">Добавить объект</a>
-					</li>
-					<li class="nav-item">
-					<a class="nav-link active" aria-current="page" href="/add_type">Добавить тип</a>
-					</li>
+						<li class="nav-item">
+							<a class="nav-link" href="/types">Типы</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="/search">Поиск</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="/add">Добавить объект</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="/add_type">Добавить тип</a>
+						</li>
 					</ul>
+
 				</div>
 			</div>
-
 		</nav>
-
-		<div class="container"> 
-		{% block content %}
-		
-		{% endblock %}
+		<div class="col-2 d-flex content-justify-end">
+			<h3>Last message from session:</h3>
+			<ul class="list-group">
+				{% for item in messages %}
+					<li class="list-group-item list-group-item-primary">
+						<a href="http://localhost:9007{{item}}">{{item}}</a>
+					</li>
+				{% endfor %}
+			</ul>
 		</div>
-	</body>
-</html>
+		<div class="container"> {% block content %}{% endblock %}
+			</div>
+
+		</body>
+	</html>

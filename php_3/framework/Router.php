@@ -8,7 +8,7 @@ class Route
     public function middleware(BaseMiddleware $m) : Route {
         array_push($this->middlewareList, $m);
         return $this;
-    }
+    } 
 
     public function __construct($route_regexp, $controller)
     {
@@ -41,7 +41,9 @@ class Router
     }
 
     public function get_or_default($default_controller)
-    {
+    {   session_set_cookie_params(60*60*10);
+        session_start();
+        
         $url = $_SERVER["REQUEST_URI"];
         $path = parse_url($url, PHP_URL_PATH);
         $controller = $default_controller;
