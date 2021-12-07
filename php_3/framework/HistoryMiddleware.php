@@ -5,10 +5,10 @@ class HistoryMiddleware extends BaseMiddleware{
         if(!isset($_SESSION['messages'])){
             $_SESSION['messages'] = [];
             }
-            $url = $_SERVER['HTTP_REFERER'];
+            $url = $_SERVER['REQUEST_URI'];
             if (count($_SESSION['messages']) > 5 ) {
-            array_shift($_SESSION['messages']);
+            array_pop($_SESSION['messages']);
             }
-            array_push($_SESSION['messages'], parse_url($url, PHP_URL_PATH));       
+            array_unshift($_SESSION['messages'], urldecode($url));    
     }
 }

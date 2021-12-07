@@ -1,0 +1,25 @@
+{% extends  "__layout.twig" %}
+
+{% block content %}
+	<div class="card border-primary mb-3">
+		<div class="card-header bg-primary text-white">
+			<h1 class="m-2">Введите имя пользователя и пароль</h1>
+		</div>
+		<div class="card-body text-primary">
+			<form action="" enctype="multipart/form-data" method="POST" class="row g-3">
+				<div class="col-md-4 mx-auto">
+					<label class="form-label">Имя пользователя</label>
+					<input type="text" name="user" class="form-control">
+				</div>
+				<div class="col-6 mx-auto">
+					<label class="form-label">Пароль</label>
+					<input type="text" class="form-control" name="password">
+				</div>
+				<div class="col-12 mx-auto">
+					<button type="submit" class="btn btn-primary">Войти</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	
+{% endblock %}

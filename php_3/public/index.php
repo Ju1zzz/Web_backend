@@ -15,6 +15,7 @@ require_once "../controllers/FilmObjectUpdateController.php";
 require_once "../controllers/SetWelcomeController.php";
 require_once "../framework/BaseRestController.php";
 require_once "../middlewares/LoginRequiredMiddleware.php";
+require_once "../controllers/LogInController.php";
 
 require_once "../controllers/Controller404.php";
 
@@ -33,7 +34,7 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $router = new Router($twig, $pdo);
 $router->add("", BaseMiddleware::class);
 $router->add("/", MainController::class);
-            
+$router->add("/sign_in", LogInController::class);           
 $router->add("/object/(?P<id>\d+)", ObjectController::class)->middleware(new HistoryMiddleware());
 $router->add("/search", SearchController::class)->middleware(new HistoryMiddleware());
 $router->add("/add", FilmObjectCreateController::class)

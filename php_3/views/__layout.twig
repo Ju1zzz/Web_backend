@@ -35,22 +35,32 @@
 						<li class="nav-item">
 							<a class="nav-link active" aria-current="page" href="/add_type">Добавить тип</a>
 						</li>
+						<li class="nav-item">
+							<button type="submit" class="btn btn-primary" href="/sign_in">Войти</button>
+						</li>
 					</ul>
 
 				</div>
 			</div>
 		</nav>
-		<div class="col-2 d-flex content-justify-end">
-			<h3>Last message from session:</h3>
-			<ul class="list-group">
-				{% for item in messages %}
-					<li class="list-group-item list-group-item-primary">
-						<a href="http://localhost:9007{{item}}">{{item}}</a>
-					</li>
-				{% endfor %}
-			</ul>
-		</div>
-		<div class="container"> {% block content %}{% endblock %}
+
+		<div class="container">
+			<div class="row">
+				<div class="col"> {% block content %}{% endblock %}
+					</div>
+					<div class="col-2">
+						<p>Последние посещенные сайты:</p>
+						<ul class="list-group">
+							{% for item in messages %}
+								<li class="list-group-item list-group-item-primary">
+									<a href="http://localhost:9007{{item}}">{{item}}</a>
+								</li>
+							{% endfor %}
+						</ul>
+					</div>
+
+
+				</div>
 			</div>
 
 		</body>
