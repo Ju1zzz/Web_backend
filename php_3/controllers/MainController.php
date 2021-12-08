@@ -10,7 +10,7 @@ class MainController extends BaseFilmTwigController {
        
         $context = parent::getContext(); 
     
-    if (isset($_GET['type'])) {
+       if (isset($_GET['type'])) {
        $query = $this->pdo->prepare("SELECT * FROM objects WHERE type = :type");
        $query->bindValue("type", $_GET['type']);
        $query->execute();
@@ -21,8 +21,7 @@ class MainController extends BaseFilmTwigController {
     }
 
     $context['objects'] = $query->fetchAll();
-    $context["messages"] = isset($_SESSION['messages']) ? $_SESSION['messages'] : "";
-        return $context;
+    return $context;
     }
     
 }

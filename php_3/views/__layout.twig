@@ -35,11 +35,15 @@
 						<li class="nav-item">
 							<a class="nav-link active" aria-current="page" href="/add_type">Добавить тип</a>
 						</li>
-						<li class="nav-item">
-							<button type="submit" class="btn btn-primary" href="/sign_in">Войти</button>
-						</li>
 					</ul>
-
+					<form action="/set-welcome/">
+						<input type="text" name="message" class="form-control mr-2 ml-2">
+					</form>
+				</div>
+				<div class="row justify-content-end">
+					<a class="navbar-brand col-auto btn btn-primary" href="/logout">
+						<i class="fas fa-sign-out-alt"></i>
+						Out</a>
 				</div>
 			</div>
 		</nav>

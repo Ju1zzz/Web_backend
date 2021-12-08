@@ -1,25 +1,25 @@
 <?php
-class LogInController extends TwigBaseController{
-    public $template="logIn.twig";
+require_once "BaseFilmTwigController.php";
 
+class LogInController extends BaseFilmTwigController{
+    public $template = "login.twig";
+    public $title = "Login";
 
-    public function post(array $context){
-        $user = isset($POST['user']) ? $POST['user'] : '';
-        $password = isset($POST['password']) ? $POST['password'] : '';
-        $_SESSION["is_logged"]=False;
-        $sql = <<<EOL
-        SELECT * FROM users WHERE username = :username AND password = :password
-        EOL;
-
-        $query = $controller->pdo->prepare($sql);
+    public function post(array $context)
+    {
+        $user = $_POST['login'];
+        $password = $_POST['password'];        
+        $query = $this->pdo->prepare("SELECT * FROM users WHERE username = :username AND password = :password");
         $query->bindValue("username", $user);
         $query->bindValue("password", $password);
-        $query->execute();
-
+        $query->execute(); 
         $data = $query->fetch();
-        
+        print_r($data);
         if ($data) {
-            $_SESSION["is_logged"]=True;
-        }
+            $_SESSION["is_logged"] = true;
+            header('Location: /');
+        } 
+        $context['message'] = 'Неверные данные';
+        $this->get($context);
     }
 }

@@ -48,7 +48,6 @@ class ObjectController extends BaseFilmTwigController {
            
             $context['description'] = $data['description'];    
         } 
-        $context["messages"] = isset($_SESSION['messages']) ? $_SESSION['messages'] : "";
         return $context;
     }
 }

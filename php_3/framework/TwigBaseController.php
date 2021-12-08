@@ -16,9 +16,11 @@ class TwigBaseController extends BaseController {
 
     public function getContext() : array
     {
-        $context = parent::getContext(); 
-        $context['title'] = $this->title;
+        $context = parent::getContext(); // вызываем родительский метод
         $context["messages"] = isset($_SESSION['messages']) ? $_SESSION['messages'] : "";
+        $context['title'] = $this->title; // добавляем title в контекст
+        $query = $this->pdo->query("SELECT * FROM objects");
+        $context['objects'] = $query->fetchAll();
         return $context;
     }
 
