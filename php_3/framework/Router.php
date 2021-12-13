@@ -1,6 +1,5 @@
 <?php
-session_set_cookie_params(60*60*10);
-session_start();
+
 class Route
 {
     public string $route_regexp;
@@ -43,7 +42,8 @@ class Router
     }
 
     public function get_or_default($default_controller)
-    {           
+    {   session_set_cookie_params(60*60*10);
+        session_start(); 
         $url = $_SERVER["REQUEST_URI"];
         $path = parse_url($url, PHP_URL_PATH);
         $controller = $default_controller;
@@ -52,9 +52,8 @@ class Router
 
         foreach ($this->routes as $route) {
             if (preg_match($route->route_regexp, $path, $matches)) {
-                 $newRoute = $route;
                  $controller = $route->controller;
-                              
+                 $newRoute = $route;                              
                 break;
             }
         }

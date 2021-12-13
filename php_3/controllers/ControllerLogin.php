@@ -1,7 +1,7 @@
 <?php
 require_once "BaseFilmTwigController.php";
 
-class LogInController extends BaseFilmTwigController{
+class ControllerLogin extends BaseFilmTwigController{
     public $template = "login.twig";
     public $title = "Login";
 
@@ -21,5 +21,5 @@ class LogInController extends BaseFilmTwigController{
         } 
         $context['message'] = 'Неверные данные';
         $this->get($context);
-    }
+    }  
 }

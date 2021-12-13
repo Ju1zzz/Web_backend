@@ -14,7 +14,7 @@ require_once "../controllers/FilmObjectUpdateController.php";
 require_once "../controllers/SetWelcomeController.php";
 require_once "../framework/BaseRestController.php";
 require_once "../middlewares/LoginRequiredMiddleware.php";
-require_once "../controllers/LogInController.php";
+require_once "../controllers/ControllerLogin.php";
 require_once "../controllers/ControllerLogOut.php";
 
 require_once "../controllers/Controller404.php";
@@ -49,7 +49,7 @@ $router->add("/object/(?P<id>\d+)/edit", FilmObjectUpdateController::class)
 ->middleware(new LoginRequiredMiddleware())->middleware(new HistoryMiddleware());
 $router->add("/api/objects", BaseRestController::class);
 $router->add("/api/objects/(?P<id>\d+)", BaseRestController::class);
-$router->add("/login", LogInController::class);
-$router->add("/log_out", ControllerLogOut::class);
+$router->add("/login", ControllerLogin::class);
+$router->add("/logout", ControllerLogOut::class);
 
 $router->get_or_default(Controller404::class);
