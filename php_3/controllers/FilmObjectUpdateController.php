@@ -27,6 +27,7 @@ class FilmObjectUpdateController extends BaseFilmTwigController {
         $description = $_POST['description'];
         $type = $_POST['type'];
         $info = $_POST['info'];
+        $video = $_POST['video'];
         $tmp_name = $_FILES['image']['tmp_name'];
         $name =  $_FILES['image']['name'];
         
@@ -34,14 +35,14 @@ class FilmObjectUpdateController extends BaseFilmTwigController {
 
         if($_FILES['image']['name']==''){
          $sql = <<<EOL
-        UPDATE `objects` SET `title`= :title, `description`= :description, `type`= :type, `info`= :info WHERE `id`= :id
+        UPDATE `objects` SET `title`= :title, `description`= :description, `type`= :type, `info`= :info, `video`= :video WHERE `id`= :id
         EOL;
         $query = $this->pdo->prepare($sql);   
         } else{
             move_uploaded_file($tmp_name, "../public/media/$name");
             $image_url = "/media/$name";
             $sql = <<<EOL
-        UPDATE `objects` SET `title`= :title, `description`= :description, `type`= :type, `info`= :info,`image`= :image_url  WHERE `id`= :id
+        UPDATE `objects` SET `title`= :title, `description`= :description, `type`= :type, `info`= :info,`image`= :image_url, `video`= :video  WHERE `id`= :id
         EOL; 
         $query = $this->pdo->prepare($sql);
         $query->bindValue("image_url", $image_url);
@@ -53,7 +54,7 @@ class FilmObjectUpdateController extends BaseFilmTwigController {
         $query->bindValue(":description", $description);
         $query->bindValue(":type", $type);
         $query->bindValue(":info", $info);
-       
+        $query->bindValue(":video", $video);
 
         $query->execute();
         $context['message'] = 'Объект успешно обновлён';

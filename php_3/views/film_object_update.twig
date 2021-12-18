@@ -30,6 +30,10 @@
 						{% endfor %}
 					</select>
 				</div>
+				<div class="col-6">
+					<label class="form-label">Ссылка на видео</label>
+					<input type="text" class="form-control" name="video" value="{{object.video}}">
+				</div>
 				<div class="col-9">
 				<a class="ripple" href="/object/{{object.id}}"><img src="{{ object.image }}"
         class=" p-1 img-thumbnail rounded" /></a>

@@ -12,13 +12,14 @@ class FilmObjectCreateController extends BaseFilmTwigController {
         $info = $_POST['info'];
         $tmp_name = $_FILES['image']['tmp_name'];
         $name =  $_FILES['image']['name'];
+        $video = $_POST['video'];
         
         move_uploaded_file($tmp_name, "../public/media/$name");
         $image_url = "/media/$name";
 
         $sql = <<<EOL
-INSERT INTO objects(title, description, type, info, image)
-VALUES(:title, :description, :type, :info, :image_url)
+INSERT INTO objects(title, description, type, info, image, video)
+VALUES(:title, :description, :type, :info, :image_url, :video)
 EOL;
 
         // подготавливаем запрос к БД
@@ -29,6 +30,7 @@ EOL;
         $query->bindValue("type", $type);
         $query->bindValue("info", $info);
         $query->bindValue("image_url", $image_url);
+        $query->bindValue("video", $video);
        
         
         $query->execute();

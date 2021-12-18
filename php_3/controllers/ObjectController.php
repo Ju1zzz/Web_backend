@@ -15,6 +15,9 @@ class ObjectController extends BaseFilmTwigController {
            return "base_info.twig";
 
             }
+            elseif ($_GET['view']=='video') {
+                return "video.twig";
+            }
         }
         return parent::getTemplate();
     }
@@ -24,7 +27,7 @@ class ObjectController extends BaseFilmTwigController {
         $context = parent::getContext();
         
 
-            $query = $this->pdo->prepare("SELECT image, info, description, title, id FROM objects WHERE id= :my_id");
+            $query = $this->pdo->prepare("SELECT video, image, info, description, title, id FROM objects WHERE id= :my_id");
             $query->bindValue("my_id", $this->params['id']); 
             $query->execute();
             $data = $query->fetch();
@@ -42,6 +45,10 @@ class ObjectController extends BaseFilmTwigController {
             elseif ($_GET['view']=='info') {
             $context['type'] = "text";
             $context['text'] = $data['info'];
+            }
+            elseif ($_GET['view']=='video') {
+                $context['type'] = "video";
+                $context['video'] = $data['video'];
             }
         }
         else {
